@@ -1,20 +1,18 @@
 import React from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import { BiCopy } from "react-icons/bi";
 
-
-const ReusableTable = ({data}) => {
+const ReusableTable = ({data, pageName}) => {
     const tableHeaders = Object.keys(data[0])
+    console.log(location.pathname.split("/").reverse()[0]);
     console.log(tableHeaders);
-    console.log(location.pathname.split("/").sort((a,b)=> a + b));
-    
-    
-    
+    location.pathname.split("/").reverse()[0] === "accounts" ? tableHeaders.splice(tableHeaders.length-3, 3) : tableHeaders.splice(2, tableHeaders.length-5) 
+       
     
 
     
   return (
-    <div className='h-[100%] overflow-auto'>
-        <table className=''>
+    <div className='w-[100%] h-[100%] overflow-auto'>
+        <table className='w-[100%]'>
             <thead>
                 <tr className=''>
                     {
@@ -35,40 +33,43 @@ const ReusableTable = ({data}) => {
                             </td>
                             <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.full_name}
-                            </td >
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td >                            
+                            {pageName != "user-info" ? <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.pinfl}
+                            </td> : <td className="flex gap-2 items-center border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                                {user.entrance_code} <BiCopy className='hover:cursor-pointer'/>
+                            </td>}
+                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                                {pageName != "user-info" ? user.auto_number : user.account_type}
                             </td>
                             <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
-                                {user.auto_number}
+                                {pageName != "user-info" ? user.vin_code: user.created_at}
                             </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
-                                {user.vin_code}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.car_type}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td>}
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.car_model}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td>}
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.client_id}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td>}
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.bank_branch}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td>}
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.gps_engineer_status}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td>}
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.affirmative_status}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td>}
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.legal_status}
-                            </td>
-                            <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
+                            </td>}
+                            {pageName != "user-info" && <td className="border border-gray-200 font-[inter] text-black capitalize text-[1rem] px-[24px] py-[12px] font-[600] whitespace-nowrap text-start">
                                 {user.files && "SMTH"}
-                            </td>
+                            </td>}
+
                         </tr>
                     )
                 }

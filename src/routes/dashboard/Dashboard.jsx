@@ -8,7 +8,7 @@ import "./Dashboard.scss"
 
 const Dashboard = () => {
   return (
-    <div className='flex h-[100vh] max-w-[100vw] overflow-x-hidden'>
+    <div className='flex h-[100vh] w-[100vw]'>
       <div className="py-[14px] px-[10px] flex-col flex gap-2 min-w-fit">
         <div className='flex gap-3 items-center'>
           <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="photo" className='w-[28px] aspect-square rounded-sm'/>
